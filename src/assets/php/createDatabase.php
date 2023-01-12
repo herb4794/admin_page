@@ -199,9 +199,9 @@ class CreateDatabase extends Config
     echo $data['total'];
   }
 
-  public function userInfo()
+  public function userInfo($forgotPasswordCode)
   {
-    $sql = "SELECT * FROM $this->tableName WHERE id";
+    $sql = "SELECT * FROM $this->tableName WHERE forgotPasswordCode = '$forgotPasswordCode'";
     $result = $this->conn->query($sql);
 
     if ($result) {
@@ -366,26 +366,61 @@ class CreateDatabase extends Config
   }
 
 
-  public function userProfile($name)
+  public function userProfile($email)
   {
-    $sql = "SELECT * FROM users WHERE name= :name";
-    $select_profile = $this->conn->prepare($sql);
-    $select_profile->execute(['name' => $name]);
-    $result = $select_profile->fetch(PDO::FETCH_ASSOC);
+    $sql = "SELECT * FROM users WHERE email= :email";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute(['email' => $email]);
+    $result = $stmt->fetch();
     return $result;
   }
 
-  public function forGotPassword($name)
+  public function forGotPassword($email, $name)
   {
-    $sql = "SELECT * FROM $this->tableName WHERE  name= :name";
+    $sql = "SELECT * FROM $this->tableName WHERE email= :email";
     $stmt = $this->conn->prepare($sql);
-
+    $forgotPasswordCode = md5($email . time());
     $stmt->execute([
-      'name' => $name
+      'email' => $email
     ]);
+    $result = $stmt->fetch();
+    if ($stmt->rowCount() > 0) {
+      $sql = "UPDATE users SET forgotPasswordCode = '$forgotPasswordCode' WHERE email = '$email'";
+      $stmt = $this->conn->prepare($sql);
+      $stmt->execute();
+      $to = $email;
+      $msg = "Please Check This To Change Your Password";
+      $subject = "HVAR Support Department";
+      $headers = "MIME-VERSION:1.0" . "\r\n";
+      $headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
+      $headers .= "From: HVAR.mail | Programing Blog (Demo) <herb4794@gmail.com>" . "\r\n";
+      $msg .= "<html></body><div><div>Dear $name ,</div></br></br>";
+      $msg .= "<div style='padding-top:8px;'>Please click The following link For verifying and activation of your account</div>
+        <div style='padding-top:10px;'><a href='http://localhost/admin_page/src/www/revisePassword.php?forgotIdVerification=$forgotPasswordCode'>Click Here</a></div> 
+        </body></html>";
+      mail($to, $subject, $msg, $headers);
+    }
+    return $result;
+  }
+
+  public function forGotPasswordResetPage($forgotPasswordCode, $password)
+  {
+
+    $sql = "UPDATE $this->tableName SET password = :password WHERE forgotPasswordCode = :forgotIdVerification";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(':forgotIdVerification', $forgotPasswordCode, PDO::PARAM_STR);
+    $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+    $stmt->execute();
 
     $result = $stmt->fetch();
     return $result;
+
+    // if ( $result) {
+    //   $sql = "UPDATE $this->tableName SET password = '$password' WHERE forgotPasswordCode = :forgotIdVerification";
+    //   $stmt = $this->conn->prepare($sql);
+    //   $stmt->bindParam(':forgotIdVerification', $forgotPasswordCode, PDO::PARAM_STR);
+    //   $stmt->execute();
+    // }
   }
 
   public function verificationCode($activationCode)

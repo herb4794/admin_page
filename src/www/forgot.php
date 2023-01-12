@@ -301,7 +301,7 @@ require_once '../assets/php/createDatabase.php';
          
               <?php if (isset($_SESSION["forgotPassword"])) {
                 $forgotId = $_SESSION["forgotPassword"];
-                echo "<p>You Password Is [<strong id=\"forgotText\">$forgotId</strong>]</p>";
+                echo "<p>The Verification Code is send to[<strong id=\"forgotText\">$forgotId</strong>]</p>";
               }else{
                 echo "<p>You User ID is Wrong Please Try Again</p>";
               }
