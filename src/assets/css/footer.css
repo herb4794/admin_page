@@ -1,0 +1,92 @@
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+footer {
+    position: relative;
+    top: 44px;
+    width: 100%;
+    padding: 15px 0;
+    border-top: 2.3px solid rgb(255, 163, 0, 0.95);
+    background: rgb(200, 200, 200, 0.85);
+}
+
+footer .container-fluid {
+    width: 86%;
+    margin: 0 auto;
+}
+
+
+footer .container-fluid .row .col h4 {
+    font-size: clamp(10px, 1.3vw, 20px);
+    font-weight: 600;
+    padding: 15px 0;
+}
+
+footer .container-fluid .row .col p {
+    font-size: clamp(9px, 1.3vw, 16px);
+    text-align: center;
+    margin-top: -8px;
+    padding-bottom: 15px;
+}
+
+footer .container-fluid .row .col .app-img {
+    text-align: center;
+}
+
+footer .container-fluid .row .col .app-img img {
+    width: auto;
+    height: 100%;
+    max-height: 45px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer .container-fluid .row .col .payment-img {
+    text-align: center;
+}
+
+footer .container-fluid .row .col .payment-img img {
+    width: auto;
+    height: 100%;
+    max-height: 45px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+footer .container-fluid .row .col ul {
+    list-style: none;
+}
+
+footer .container-fluid .row .col ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+footer .container-fluid .row .col ul li a {    
+    font-size: clamp(9px, 1.3vw, 16px);
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 300;
+    color: rgb(75, 75, 75);
+    display: block;
+    transition: all 0.3s ease;
+}
+
+
+footer .container-fluid .row .col ul li a:hover {
+    margin-left: 10px;
+    color:rgb(255, 145, 0);
+    transition: all 0.3s ease;
+}
+
+footer .container-fluid .copyrightText {
+    padding: 20px 0;
+    margin-top: 15px;
+    width: 100%;
+    background: transparent;
+    text-align: center;
+    font-size: 10px;
+    color: rgb(75, 75, 75);
+    border-top: 1.3px solid rgb(190, 190, 190, 0.95);
+  }
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/

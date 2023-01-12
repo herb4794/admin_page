@@ -1,0 +1,14 @@
+header .shopping-bag-container .logout_icon {
+  background: url('../images/navigation-bar/tools/box-arrow-left.svg');
+  vertical-align: middle;
+  display: inline-block;
+  background-position: center;
+  background-size: 15px;
+  height: 15px;
+  width: 20px;
+  background-repeat: no-repeat;
+  margin-top: -2px;
+  margin-right: 15px;
+  margin-left: -15px;
+  opacity: 0.65;
+}

@@ -1,0 +1,89 @@
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+ol,
+ul {
+    padding-left: 0rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
+
+/* Cover for Support.html */
+.carousel .carousel-inner .carousel-item .carousel-caption {
+    top: 30%;
+    left: 20%;
+    text-align: left;
+}
+
+/* Cover for Support.html */
+
+.carousel.slide .carousel-indicators {
+    bottom: 0px;
+    height: 6px;
+}
+
+.carousel.slide .carousel-indicators .active {
+    background-color: rgb(255, 163, 0, 0.85);
+}
+
+.carousel.slide .carousel-indicators button {
+    display: block;
+    background-color: rgb(35, 35, 35, 0.85);
+    padding: 0.2% 2%;
+    margin: 0 5px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.carousel.slide .carousel-indicators .active:hover {
+    background-color: rgb(255, 163, 0, 1);
+}
+
+.carousel.slide .carousel-indicators button:hover {
+    opacity: 1;
+}
+
+.carousel.slide .carousel-inner .carousel-item {
+    background: linear-gradient(90deg, rgb(5, 5, 5, 0.95), rgb(35, 35, 35, 0.85), rgb(5, 5, 5, 0.95));
+}
+
+
+.carousel.slide .carousel-control-prev,
+.carousel.slide .carousel-control-next {
+    top: 44px;
+    width: 8%;
+}
+
+.carousel.slide .carousel-control-prev .carousel-control-prev-icon {
+    background: url('../images/bootstrap-carousel/tools/chevron-left_white.svg');
+}
+
+
+.carousel.slide .carousel-control-next .carousel-control-next-icon {
+    background: url('../images/bootstrap-carousel/tools/chevron-right_white.svg');
+}
+
+.carousel.slide .carousel-control-prev .carousel-control-prev-icon,
+.carousel.slide .carousel-control-next .carousel-control-next-icon {
+    display: block;
+    margin-left: 2px;
+    background-position: center;
+    background-size: 23px;
+    height: 23px;
+    width: 23px;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+}
+
+.carousel.slide .carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel.slide .carousel-control-next:hover .carousel-control-next-icon {
+    opacity: 1;
+}
+
+@media (max-width: 1025px) {
+    .carousel.slide .carousel-indicators {
+        bottom: -35px;
+    }
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/

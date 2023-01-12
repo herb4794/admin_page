@@ -1,0 +1,770 @@
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Register & login.html */
+/* Start of Register and Login  */
+
+/* Sign-In & Sign-Up Icon */
+.register-and-login .sign-up-link-user, 
+.register-and-login .sign-in-link-user {
+  background: url('../images/register-and-login/tools/person-fill_black.svg');
+}
+
+.register-and-login .sign-up-link-email {
+  background: url('../images/register-and-login/tools/envelope-fill_black.svg');
+}
+
+.register-and-login .sign-up-link-password-lock, 
+.register-and-login .sign-in-link-password-lock {
+  background: url('../images/register-and-login/tools/lock-fill_black.svg');
+}
+
+
+.register-and-login .sign-up-link-email {
+  margin: 14px 10px;
+  display: block;
+  background-position: center;
+  background-size: 22px;
+  height: 30px;
+  width: 30px;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+}
+
+.register-and-login .sign-up-link-user, 
+.register-and-login .sign-in-link-user, 
+.register-and-login .sign-up-link-password-lock, 
+.register-and-login .sign-in-link-password-lock {
+  margin: 12px 10px;
+  display: block;
+  background-position: center;
+  background-size: 28px;
+  height: 30px;
+  width: 30px;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+}
+
+.register-and-login .sign-up-link-user.active, 
+.register-and-login .sign-in-link-user.active {
+  background: url('../images/register-and-login/tools/person-fill_orange.svg');
+}
+
+.register-and-login .sign-up-link-email.active {
+  background: url('../images/register-and-login/tools/envelope-open-fill_orange.svg');
+}
+
+.register-and-login .sign-up-link-password-lock.active, 
+.register-and-login .sign-in-link-password-lock.active {
+  background: url('../images/register-and-login/tools/unlock-fill_orange.svg');
+}
+
+.register-and-login .sign-up-link-email.active {
+  margin: 12px 10px;
+  display: block;
+  background-position: center;
+  background-size: 22px;
+  height: 30px;
+  width: 30px;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: all 0.2s ease;
+}
+
+.register-and-login .sign-up-link-password-lock.active, 
+.register-and-login .sign-in-link-password-lock.active {
+  margin: 12px 12px;
+  display: block;
+  background-position: center;
+  background-size: 28px;
+  height: 30px;
+  width: 30px;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.register-and-login .sign-up-link-user.active, 
+.register-and-login .sign-in-link-user.active {
+  margin: 12px 10px;
+  display: block;
+  background-position: center;
+  background-size: 28px;
+  height: 30px;
+  width: 30px;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: all 0.2s ease;
+}
+
+/* Social Platforms Icon */
+.register-and-login .link-facebook{
+  background: url('../images/register-and-login/tools/facebook_black.svg');
+  display: block;
+  background-position: center;
+  background-size: 28px;
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  opacity: 0.75;
+}
+
+
+.register-and-login .link-twitter {
+  background: url('../images/register-and-login/tools/twitter_black.svg');
+  display: block;
+  margin-left: 2px;
+  background-position: center;
+  background-size: 23px;
+  height: 23px;
+  width: 23px;
+  background-repeat: no-repeat;
+  opacity: 0.75;
+}
+
+.register-and-login .link-google {
+  background: url('../images/register-and-login/tools/google_black.svg');
+  display: block;
+  background-position: center;
+  background-size: 23px;
+  height: 23px;
+  width: 23px;
+  background-repeat: no-repeat;
+  opacity: 0.75;
+}
+
+.register-and-login .link-linkedin {
+  background: url('../images/register-and-login/tools/linkedin_black.svg');
+  margin-left: 2px;
+  display: block;
+  background-position: center;
+  background-size: 25px;
+  height: 25px;
+  width: 25px;
+  background-repeat: no-repeat;
+  opacity: 0.75;
+}
+
+.register-and-login .link-box-arrow-up-right {
+  background: url('../images/register-and-login/tools/box-arrow-up-right_black.svg');
+  position: fixed;
+  margin-top: -17px;
+  margin-left: 205px;
+  display: block;
+  background-position: center;
+  background-size: 15px;
+  height: 15px;
+  width: 15px;
+  background-repeat: no-repeat;
+  opacity: 0.75;
+}
+
+.register-and-login .container-fluid {
+  top: 44px;
+  position: relative;
+  width: 100%;
+  background-color: rgb(252, 252, 252);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.register-and-login .forms-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.register-and-login .signin-signup {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 75%;
+  width: 50%;
+  transition: 1s 0.7s ease-in-out;
+  display: grid;
+  grid-template-columns: 1fr;
+  z-index: 5;
+}
+
+.register-and-login form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0rem 5rem;
+  transition: all 0.2s 0.7s;
+  overflow: hidden;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.register-and-login form.sign-up-form {
+  position: relative;
+  opacity: 0;
+  z-index: 1;
+}
+
+.register-and-login form.sign-in-form {
+  z-index: 2;
+}
+
+.register-and-login .title {
+  font-size: 26px;
+  color: rgb(75, 75, 75);
+  margin-bottom: 10px;
+}
+
+.register-and-login .input-field {
+  max-width: 380px;
+  width: 100%;
+  background-color: rgb(235, 235, 235);
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+}
+
+.register-and-login .input-field i {
+  text-align: center;
+  line-height: 55px;
+  color: rgb(200, 200, 200);
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+
+.register-and-login .sign-in-form .input-sign-in-username, 
+.register-and-login .sign-in-form .input-sign-in-password, 
+.register-and-login .sign-up-form .input-sign-up-username, 
+.register-and-login .sign-up-form .input-sign-up-email, 
+.register-and-login .sign-up-form .input-sign-up-password {
+  color: rgb(160, 160, 160);
+  font-size: 22px;
+  position: absolute;
+  padding-left: 45px;
+  padding-right: 20px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+.register-and-login .sign-in-form .input-sign-in-username:hover,  
+.register-and-login .sign-in-form .input-sign-in-password:hover,
+.register-and-login .sign-up-form .input-sign-up-username:hover, 
+.register-and-login .sign-up-form .input-sign-up-email:hover, 
+.register-and-login .sign-up-form .input-sign-up-password:hover {
+  border: 3px solid #f7b75f;
+  border-radius: 32px;
+}
+
+.register-and-login .sign-in-form .input-sign-in-username.active, 
+.register-and-login .sign-in-form .input-sign-in-password.active,
+.register-and-login .sign-up-form .input-sign-up-username.active, 
+.register-and-login .sign-up-form .input-sign-up-email.active, 
+.register-and-login .sign-up-form .input-sign-up-password.active {
+  color: rgb(160, 160, 160);
+  font-size: 22px;
+  position: absolute;
+  padding-left: 45px;
+  padding-right: 20px;
+  top: 5px;
+  left: 5px;
+  width: 97%;
+  height: 82%;
+  background: none;
+  border: 2px solid #ff8800;
+  border-radius: 32px;
+  transition: all 0.5s ease;
+}
+
+.register-and-login .sign-in-form .label-sign-in-username, 
+.register-and-login .sign-in-form .label-sign-in-password, 
+.register-and-login .sign-up-form .label-sign-up-username, 
+.register-and-login .sign-up-form .label-sign-up-email, 
+.register-and-login .sign-up-form .label-sign-up-password {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(200, 200, 200);
+  position: absolute;
+  top: 13px;
+  left: 55px;
+  cursor: none;
+  transition: all 0.5s ease;
+}
+
+.register-and-login .sign-in-form .label-sign-in-username.active, 
+.register-and-login .sign-in-form .label-sign-in-password.active,
+.register-and-login .sign-up-form .label-sign-up-username.active, 
+.register-and-login .sign-up-form .label-sign-up-email.active, 
+.register-and-login .sign-up-form .label-sign-up-password.active {
+  font-size: 8px;
+  height: 15px;
+  padding: 0 10px;
+  top: 0;
+  left: 40px;
+  color: #ff8800;
+  background: rgb(235, 235, 235);
+}
+
+.register-and-login .input-field input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: rgb(75, 75, 75);
+}
+
+.register-and-login .input-field input::placeholder {
+  color: rgb(200, 200, 200);
+  font-weight: 500;
+}
+
+.register-and-login .sign-in-form .remember-me label{
+  cursor: none;
+}
+
+.register-and-login .social-text {
+  padding: 0.7rem 0;
+  font-size: 1rem;
+}
+
+.register-and-login .social-media {
+  display: flex;
+  justify-content: center;
+}
+
+.register-and-login .social-icon-facebook, 
+.register-and-login .social-icon-twitter, 
+.register-and-login .social-icon-google, 
+.register-and-login .social-icon-linkedin {
+  height: 46px;
+  width: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.45rem;
+  color: rgb(75, 75, 75);
+  border-radius: 50%;
+  border: 1px solid rgb(75, 75, 75);
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+
+.register-and-login .social-icon-facebook:hover .link-facebook {
+  background: url('../images/register-and-login/tools/facebook_orange.svg');
+  display: block;
+  background-position: center;
+  background-size: 28px;
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.register-and-login .social-icon-twitter:hover .link-twitter {
+  background: url('../images/register-and-login/tools/twitter_orange.svg');
+  display: block;
+  margin-left: 2px;
+  background-position: center;
+  background-size: 23px;
+  height: 23px;
+  width: 23px;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.register-and-login .social-icon-google:hover .link-google {
+  background: url('../images/register-and-login/tools/google_orange.svg');
+  display: block;
+  background-position: center;
+  background-size: 23px;
+  height: 23px;
+  width: 23px;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.register-and-login .social-icon-linkedin:hover .link-linkedin {
+  background: url('../images/register-and-login/tools/linkedin_orange.svg');
+  margin-left: 2px;
+  display: block;
+  background-position: center;
+  background-size: 25px;
+  height: 25px;
+  width: 25px;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.register-and-login .social-icon-facebook:hover,  
+.register-and-login .social-icon-twitter:hover, 
+.register-and-login .social-icon-google:hover, 
+.register-and-login .social-icon-linkedin:hover {
+  color: #ff8800;
+  border-color: #ff8800;
+}
+
+.register-and-login .btn {
+  width: 150px;
+  background-color: #fca11f;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.register-and-login .btn:hover {
+  background-color: #ff8800;
+}
+
+.register-and-login .panels-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: -20%;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.register-and-login .container-fluid:before {
+  content: "";
+  position: absolute;
+  height: 2000px;
+  width: 2000px;
+  top: -10%;
+  right: 40%;
+  transform: translateY(-50%);
+  background-image: linear-gradient(-45deg, #fca11f 0%, #ff8800 100%);
+  transition: 1.8s ease-in-out;
+  border-radius: 50%;
+  z-index: 6;
+}
+
+.register-and-login .image {
+  width: 100%;
+  transition: 1.1s ease-in-out;
+  transition-delay: 0.4s;
+}
+
+.register-and-login .panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  text-align: center;
+  z-index: 6;
+}
+
+.register-and-login .left-panel {
+  pointer-events: all;
+  padding: 3rem 17% 2rem 12%;
+}
+
+.register-and-login .right-panel {
+  pointer-events: none;
+  padding: 3rem 12% 2rem 17%;
+}
+
+.register-and-login .panel .content {
+  color: rgb(252, 252, 252);
+  transition: 0.9s ease-in-out;
+  transition-delay: 0.6s;
+}
+
+.register-and-login .forgot-password {
+  color: rgb(75, 75, 75);
+  font-size: 12px;
+  margin: 10px 0;
+  margin-left: -10px;
+  cursor: pointer;
+  text-decoration:none;
+}
+
+.register-and-login .forgot-password:hover {
+  color: #ff8800;
+}
+
+.register-and-login .forgot-password:hover .link-box-arrow-up-right {
+  background: url('../images/register-and-login/tools/box-arrow-up-right_orange.svg');
+  position: fixed;
+  margin-top: -17px;
+  margin-left: 205px;
+  display: block;
+  background-position: center;
+  background-size: 15px;
+  height: 15px;
+  width: 15px;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.register-and-login .registered-service-rules, 
+.register-and-login .registered-contracts {
+  width: 80%;
+  font-size: 12px;
+  margin: 10px 0;
+  margin-left: 3px;
+  text-align:justify;
+}
+
+.register-and-login .registered-service-rules a, 
+.register-and-login .registered-contracts a{
+  color: #ff8800;
+  cursor: pointer;
+}
+
+.register-and-login .registered-contracts a:hover{
+  border-bottom:1px solid #ff8800;;
+}
+
+.register-and-login .panel h3 {
+  font-weight: 600;
+  line-height: 1;
+  font-size: 30px;
+}
+
+.register-and-login .panel p {
+  font-size: 15px;
+  padding: 0.7rem 0;
+}
+
+.register-and-login .btn.transparent {
+  margin: 0;
+  background: none;
+  border: 2px solid rgb(252, 252, 252);
+  width: 130px;
+  height: 41px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.register-and-login .right-panel .image,
+.register-and-login .right-panel .content {
+  transform: translateX(800px);
+}
+
+/* ANIMATION */
+
+.register-and-login .container-fluid.sign-up-mode:before {
+  transform: translate(100%, -50%);
+  right: 52%;
+}
+
+.register-and-login .container-fluid.sign-up-mode .left-panel .image,
+.register-and-login .container-fluid.sign-up-mode .left-panel .content {
+  transform: translateX(-800px);
+}
+
+.register-and-login .container-fluid.sign-up-mode .signin-signup {
+  left: 25%;
+}
+
+.register-and-login .container-fluid.sign-up-mode form.sign-up-form {
+  opacity: 1;
+  z-index: 2;
+}
+
+.register-and-login .container-fluid.sign-up-mode form.sign-in-form {
+  opacity: 0;
+  z-index: 1;
+}
+
+.register-and-login .container-fluid.sign-up-mode .right-panel .image,
+.register-and-login .container-fluid.sign-up-mode .right-panel .content {
+  transform: translateX(0%);
+}
+
+.register-and-login .container-fluid.sign-up-mode .left-panel {
+  pointer-events: none;
+}
+
+.register-and-login .container-fluid.sign-up-mode .right-panel {
+  pointer-events: all;
+}
+
+
+@media (max-width: 870px) {
+  .register-and-login .container-fluid {
+    min-height: 800px;
+    height: 100vh;
+  }
+
+  .register-and-login .signin-signup {
+    width: 100%;
+    top: 90%;
+    transform: translate(-50%, -100%);
+    transition: 1s 0.8s ease-in-out;
+  }
+
+  .register-and-login .signin-signup,
+  .register-and-login .container-fluid.sign-up-mode .signin-signup {
+    left: 50%;
+  }
+
+  .register-and-login .panels-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    margin-top: 180px;
+  }
+
+  .register-and-login .panel {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2.5rem 8%;
+    grid-column: 1 / 2;
+  }
+
+  .register-and-login .right-panel {
+    grid-row: 3 / 4;
+  }
+
+  .register-and-login .left-panel {
+    grid-row: 1 / 2;
+  }
+
+  .register-and-login .image {
+    width: 200px;
+    transition: 0.9s ease-in-out;
+    transition-delay: 0.6s;
+  }
+
+  .register-and-login .panel .content {
+    padding-right: 15%;
+    transition: 0.9s ease-in-out;
+    transition-delay: 0.8s;
+  }
+
+  .register-and-login .panel h3 {
+    font-size: 1.2rem;
+  }
+
+  .register-and-login .panel p {
+    font-size: 0.7rem;
+    padding: 0.5rem 0;
+  }
+
+  .register-and-login .btn.transparent {
+    width: 110px;
+    height: 35px;
+    font-size: 0.7rem;
+  }
+
+  .register-and-login .container-fluid:before {
+    width: 1500px;
+    height: 1500px;
+    transform: translateX(-50%);
+    left: 30%;
+    bottom: 68%;
+    right: initial;
+    top: initial;
+    transition: 2s ease-in-out;
+  }
+
+  .register-and-login .container-fluid.sign-up-mode:before {
+    transform: translate(-50%, 104%);
+    bottom: 32%;
+    right: initial;
+  }
+
+  .register-and-login .container-fluid.sign-up-mode .left-panel .image,
+  .register-and-login .container-fluid.sign-up-mode .left-panel .content {
+    transform: translateY(-300px);
+  }
+
+  .register-and-login .container-fluid.sign-up-mode .right-panel .image,
+  .register-and-login .container-fluid.sign-up-mode .right-panel .content {
+    transform: translateY(0px);
+  }
+
+  .register-and-login .right-panel .image,
+  .register-and-login .right-panel .content {
+    transform: translateY(300px);
+  }
+
+  .register-and-login .container-fluid.sign-up-mode .signin-signup {
+    top: 5%;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 570px) {
+  .register-and-login form {
+    padding: 0 1.5rem;
+  }
+
+  .register-and-login .image {
+    display: none;
+  }
+
+  .register-and-login .panel .content {
+    padding: 2.5rem 1rem;
+  }
+
+  .register-and-login .container-fluid {
+    padding: 1.5rem;
+  }
+
+  .register-and-login .container-fluid:before {
+    bottom: 75%;
+    left: 50%;
+  }
+
+  .register-and-login .container-fluid.sign-up-mode:before {
+    bottom: 32%;
+    left: 50%;
+  }
+}
+
+@media (max-width: 425px) {
+  .register-and-login .container-fluid {
+    min-height: 900px;
+    height: 100vh;
+  }
+}
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Login & Register checking functions */
+
+.input-field.success input {
+	border-color: #01ccff !important;
+}
+
+
+.input-field.error input {
+    border-color: #e74c3c !important;
+}
+
+.input-field small {
+	color: #e74c3c;
+  font-size: 4px;
+	position: absolute;
+	bottom: 10px;
+	right: 19px;
+	visibility: hidden;
+}
+
+.input-field.error small {
+	visibility: visible;
+}
+
+
+
+/* End of Register and Login  */
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */

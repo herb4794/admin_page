@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700&family=Poppins:wght@300;400;500&display=swap');
+
+:root {
+  --lg-font: 'Kaisei Tokumin', serif;
+  --sm-font: 'Poppins', sans-serif;
+  --pink: #e5345b;
+  --pinkdanger: #ff7b00;
+}
+
+body {
+  font-family: var(--sm-font);
+}
+
+.fa-star,
+.fa-star-half {
+  color: yellowgreen;
+  padding: 3% 0;
+}
+
+#cart_count{
+  text-align:center;
+  padding: 0 0.6rem 0.1rem 0.6rem;
+  border-radius: 3rem;
+  
+}
+
+.shopping-cart{
+  padding: 3% 0;
+}
+
+.cart-items + .cart-items{
+  padding: 2% 0;
+}
+
+.price-details h6{
+  padding: 3% 2%;
+}
+
+a img {
+  background-color: rgb(66, 66, 66);
+  width: auto;
+  height: 15px;
+  vertical-align: middle;
+}

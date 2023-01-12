@@ -1,0 +1,75 @@
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.pages-title {
+    top: 44px;
+    position: relative;
+    padding: 15px 5vw;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.pages-title .pages-header {
+    width: 96%;
+    margin: 0 auto;
+    margin-left: 5%;
+    font-size: clamp(20px, 3vw, 25px);
+    font-weight: 800;
+}
+
+.pages-title .pages-hints {
+    width: 96%;
+    margin: 0 auto;
+    margin-left: 8%;
+    font-size: clamp(8px, 1.3vw, 16px);
+}
+
+.pages-title .pages-hints a {
+    text-decoration: none;
+    color: #ff8800;
+}
+
+.pages-title .pages-hints a:hover {
+    color: rgb(255, 163, 0, 0.8);
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.todays-deals-side-menu-container {
+    position: relative;
+    top: 44px;
+    padding: 20px auto;
+}
+
+.todays-deals-side-menu-container .todays-deals-side-menu {
+    margin: 25px 0;
+    margin-left: 5px;
+    border-right: 1px solid rgb(200, 200, 200);
+
+}
+
+.todays-deals-side-menu-container .todays-deals-side-menu .todays-deals-side-menu-header {
+    font-size: clamp(8px, 3vw, 20px);
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-transform: capitalize;
+    overflow: hidden;
+}
+
+.todays-deals-side-menu-container .todays-deals-side-menu .todays-deals-side-menu-categories {
+    margin-left: 5px;
+}
+
+.todays-deals-side-menu-container .todays-deals-side-menu .todays-deals-side-menu-categories a {
+    font-size: clamp(8px, 1.3vw, 16px);
+    font-weight: 500;
+    text-decoration:none;
+    color: rgb(75, 75, 75);
+    transition: all 0.2s ease;
+}
+
+.todays-deals-side-menu-container .todays-deals-side-menu .todays-deals-side-menu-categories a:hover {
+    margin-left: 10px;
+    color: rgb(255, 163, 0);
+    transition: all 0.2s ease;
+}
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+  

@@ -1,0 +1,291 @@
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Forgot.html */
+/*  */
+
+
+
+#forgotText{
+  color: rgb(255, 160, 35);
+}
+
+
+.forgot {
+    top: 44px;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background-color: rgb(252, 252, 252);
+    padding-bottom: 10px;
+    font-family: 'Poppins';
+  }
+  
+  .forgot .forgot-container {
+    width: 100%;
+  }
+  
+  .forgot .forgot-container h2{
+    width: 90%;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+  }
+  
+  .forgot .forgot-container .forgot-container-form {
+    width: 85%;
+    margin: 0 auto;
+  }
+  
+  .forgot .forgot-container .forgot-container-form h1{
+    padding: 15px 0;
+    font-size: 25px;
+    font-weight: 800;
+  }
+    
+  .forgot .forgot-container .forgot-container-form .input-field {
+    max-width: 380px;
+    width: 100%;
+    background-color: rgb(255, 2535, 255);
+    border: 1px solid rgb(235, 235, 235);
+    margin: 10px 0;
+    height: 55px;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 0.4rem;
+    position: relative;
+  }
+  
+  .forgot .forgot-container .forgot-container-form .input-field i {
+    text-align: center;
+    line-height: 55px;
+    color: rgb(200, 200, 200);
+    transition: 0.5s;
+    font-size: 1.1rem;
+  }
+  
+  .forgot .forgot-container .forgot-container-form .input-field input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: rgb(75, 75, 75);
+  }
+  
+  .forgot .forgot-container .forgot-container-form .input-field .input-forgot-username {
+    color: rgb(160, 160, 160);
+    font-size: 22px;
+    position: absolute;
+    padding-left: 13px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+  }
+  
+  .forgot .forgot-container .forgot-container-form .input-field .input-forgot-username:hover {
+    width: 102%;
+    height: 112%;
+    margin-left: -4px;
+    margin-top: -4px;
+    border: 3px solid #f7b75f;
+    border-radius: 16px;
+  }
+  
+  .forgot .forgot-container .forgot-container-form .input-field .label-forgot-username {
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(150, 150, 150);
+    position: absolute;
+    top: 12px;
+    left: 13px;
+    cursor: none;
+    transition: all 0.5s ease;
+  }
+  
+  .forgot .forgot-container .forgot-container-form .input-field .input-forgot-username.active {
+    width: 98%;
+    height: 82%;
+    margin-left: 4px;
+    margin-top: 5px;
+    border: 2px solid #ff8800;
+    border-radius: 8px;
+  }
+  
+  .forgot .forgot-container .forgot-container-form .input-field .label-forgot-username.active {
+    font-size: 8px;
+    height: 15px;
+    padding: 0 10px;
+    top: 0;
+    left: 20px;
+    color: #ff8800;
+    background: rgb(255, 255, 255);
+  }
+  
+  .forgot .forgot-container .forgot-container-form .forgot-id {
+    padding: 15px 0;
+    font-size: 15px;
+  }
+  
+  .forgot .forgot-container .forgot-container-form p a {
+    text-decoration:none;
+    color: #fca11f;
+    cursor: pointer;
+  }
+  
+  .forgot .forgot-container .forgot-container-form p a:hover {
+    color: #ff8800;
+  }
+  
+  .forgot .forgot-container .forgot-container-form .forgot-continue-btn {
+    min-width: 130px;
+    height: 40px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    background: #ff8800;
+    color: rgb(252, 252, 252);
+    font-size: 16px;
+    border-radius: 12px;
+    border: 0 ;
+    cursor: pointer;
+  }
+  
+  .forgot .forgot-container .forgot-container-form .forgot-continue-btn.active {
+    background: #ff8800;
+    opacity: 0.4;
+    cursor: none;
+  }
+  
+  .forgot .forgot-container .forgot-remind-form {
+    border-left: 1px solid rgb(235, 235, 235);
+    height: 85%;
+    width: 50%;
+    top: 10%;
+    right: 0;
+    position: absolute;
+  }
+  
+  .forgot .forgot-container .forgot-remind-form .forgot-info {
+    background: url('../images/fogot/tools/info-circle_black.svg');
+    display: block;
+    background-position: center;
+    background-size: 55px;
+    height: 55px;
+    width: 55px;
+    background-repeat: no-repeat;
+    margin-top: 50px;
+    margin-left: 130px;
+    opacity: 0.5;
+  }
+  
+  .forgot .forgot-container .forgot-remind-form p {
+    font-size: 13px;
+    margin: 0 auto;
+    margin-top: -60px;
+    width: 50%;
+    right: 0;
+    text-align:justify;
+  }
+  
+  @media (max-width:1024px) {
+    .forgot {
+      top: 48px;
+    }
+  
+    .forgot .forgot-container .forgot-remind-form {
+      display: none;
+    }
+  }
+  
+  @media (max-width:1700px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 130px;
+    }
+  }
+
+  @media (max-width:1650px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 125px;
+    }
+  }
+
+  @media (max-width:1600px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 120px;
+    }
+  }
+
+  @media (max-width:1550px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 115px;
+    }
+  }
+
+  @media (max-width:1500px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 110px;
+    }
+  }
+
+  @media (max-width:1450px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 105px;
+    }
+  }
+
+  @media (max-width:1400px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 100px;
+    }
+  }
+
+  @media (max-width:1350px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 80px;
+    }
+  }
+
+  @media (max-width:1300px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 75px;
+    }
+  }
+
+  @media (max-width:1250px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 70px;
+    }
+  }
+
+  @media (max-width:1200px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 65px;
+    }
+  }
+
+  @media (max-width:1150px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 60px;
+    }
+  }
+
+  @media (max-width:1100px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 55px;
+    }
+  }
+  
+  @media (max-width:1050px) {
+    .forgot .forgot-container .forgot-remind-form .forgot-info {
+      margin-left: 50px;
+    }
+  }
+
+  /* Forgot.html */
+  /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+  
+  

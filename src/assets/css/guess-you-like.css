@@ -1,0 +1,29 @@
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.guess-you-like {
+    position: relative;
+    width: 96%;
+    top: 44px;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.guess-you-like .guess-you-like-title {
+    width: 95%;
+    margin-left: 3%;
+    padding: 10px;
+    border-bottom: 1px solid rgb(255, 163, 0, 0.95);
+}
+
+.guess-you-like .guess-you-like-title .product-category {
+    font-size: clamp(23px, 5vw, 30px);
+    font-weight: 600;
+    font-family: 'Exo', sans-serif;
+}
+
+.guess-you-like .container-fluid {
+    padding-top: 10px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
