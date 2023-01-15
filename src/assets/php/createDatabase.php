@@ -183,8 +183,9 @@ class CreateDatabase extends Config
     $sql = "DELETE FROM $this->tableName WHERE id='$product_id' LIMIT 1";
 
     $result = $this->conn->query($sql);
-
+    
     if ($result->rowCount() > 0) {
+      
       return $result;
     } else {
       die();
@@ -319,7 +320,6 @@ class CreateDatabase extends Config
     if ($result->rowCount() > 0) {
       $login = $this->conn->prepare($select);
       $login->execute();
-      // header("location:../www/register-and-login.php");
       if ($row['status'] == 1) {
         if ($row['user_type'] == 'admin') {
           $_SESSION['admin_name'] = $row['name'];
@@ -414,13 +414,6 @@ class CreateDatabase extends Config
 
     $result = $stmt->fetch();
     return $result;
-
-    // if ( $result) {
-    //   $sql = "UPDATE $this->tableName SET password = '$password' WHERE forgotPasswordCode = :forgotIdVerification";
-    //   $stmt = $this->conn->prepare($sql);
-    //   $stmt->bindParam(':forgotIdVerification', $forgotPasswordCode, PDO::PARAM_STR);
-    //   $stmt->execute();
-    // }
   }
 
   public function verificationCode($activationCode)
@@ -429,7 +422,6 @@ class CreateDatabase extends Config
     $stmt = $this->conn->prepare($sql);
     $stmt->bindParam(':activationCode', $activationCode, PDO::PARAM_STR);
     $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
 
     if ($stmt->rowCount() > 0) {
       $status = 0;
@@ -438,7 +430,6 @@ class CreateDatabase extends Config
       $stmt->bindParam(':activationCode', $activationCode, PDO::PARAM_STR);
       $stmt->bindParam(':status', $status, PDO::PARAM_STR);
       $stmt->execute();
-      $result = $stmt->fetchAll(PDO::FETCH_OBJ);
 
       if ($stmt->rowCount() > 0) {
         $status = 1;
@@ -446,7 +437,6 @@ class CreateDatabase extends Config
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':activationCode', $activationCode, PDO::PARAM_STR);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
       } else {
         $_SESSION["msg"] = "Your account is already active, no need to activate again";
       }
