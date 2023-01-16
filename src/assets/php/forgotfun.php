@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once "createDatabase.php";
-
 $database = new createDatabase("userAdminForm", "users");
 
 if (isset($_POST["forgot-username-btn"])) {

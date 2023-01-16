@@ -1,5 +1,11 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 require_once 'config.php';
+require_once 'C:\xampp7.4\htdocs\admin_page\vendor\autoload.php';
+
 
 class CreateDatabase extends Config
 {
@@ -13,6 +19,7 @@ class CreateDatabase extends Config
   public $supDns;
   public $headers;
   public $ms;
+  protected $mail;
   // Class Constructor
   public function __construct(
     $databaseName = "",
@@ -30,12 +37,13 @@ class CreateDatabase extends Config
 
     // Create connection
     $this->con = mysqli_connect($serverName, $userName, $password, $databaseName);
-
+    $this->mail = new PHPMailer(true);
     if (!$this->con) {
       die("Connection failed: " . mysqli_connect_error());
     }
 
     try {
+
       $this->conn = new PDO($this->supDns, $userName, $password);
       $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
@@ -183,9 +191,9 @@ class CreateDatabase extends Config
     $sql = "DELETE FROM $this->tableName WHERE id='$product_id' LIMIT 1";
 
     $result = $this->conn->query($sql);
-    
+
     if ($result->rowCount() > 0) {
-      
+
       return $result;
     } else {
       die();
@@ -388,17 +396,43 @@ class CreateDatabase extends Config
       $sql = "UPDATE users SET forgotPasswordCode = '$forgotPasswordCode' WHERE email = '$email'";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute();
-      $to = $email;
-      $msg = "Please Check This To Change Your Password";
       $subject = "HVAR Support Department";
-      $headers = "MIME-VERSION:1.0" . "\r\n";
-      $headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
-      $headers .= "From: HVAR.mail | Programing Blog (Demo) <herb4794@gmail.com>" . "\r\n";
+      $msg = "Please Check This To Change Your Password";
       $msg .= "<html></body><div><div>Dear $name ,</div></br></br>";
       $msg .= "<div style='padding-top:8px;'>Please click The following link For verifying and activation of your account</div>
         <div style='padding-top:10px;'><a href='http://localhost/admin_page/src/www/revisePassword.php?forgotIdVerification=$forgotPasswordCode'>Click Here</a></div> 
         </body></html>";
-      mail($to, $subject, $msg, $headers);
+
+      try {
+        $this->mail->isSMTP();
+        $this->mail->CharSet = "utf-8";
+        $this->mail->SMTPAuth = true;
+        $this->mail->SMTPSecure = "ssl";
+
+        $this->mail->Host = 'smtp.gmail.com';
+        $this->mail->Port = 465;
+        $this->mail->SMTPOptions = array(
+          'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+          )
+        );
+        $this->mail->isHTML(true);
+
+        $this->mail->Username = 'herb4794@gmail.com';
+        $this->mail->Password = 'zmzoxeublicbskpf';
+
+        $this->mail->setFrom('herb4794@mail.com', 'HVAR.mail');
+        $this->mail->Subject = $subject;
+        $this->mail->Body = $msg;
+        $this->mail->addAddress($email, $name);
+
+        $this->mail->send();
+        $_SESSION["emailStatus"] = "Email has been sent";
+      } catch (Exception $e) {
+        echo  $_SESSION["emailStatus"] = $this->mail->ErrorInfo;
+      }
     }
     return $result;
   }

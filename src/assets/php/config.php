@@ -1,5 +1,4 @@
 <?php
-
 class Config
 {
   public const DBHOST = 'localhost';

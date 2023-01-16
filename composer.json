@@ -1,0 +1,18 @@
+{
+  "name": "lawrence/admin_page",
+  "autoload": {
+    "psr-4": {
+      "Lawrence\\AdminPage\\": "src"
+    }
+
+  },
+  "authors": [
+    {
+      "name": "valentinianism",
+      "email": "99634593+valentinianism@users.noreply.github.com"
+    }
+  ],
+  "require": {
+    "phpmailer/phpmailer": "^6.7"
+  }
+}
