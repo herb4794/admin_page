@@ -286,7 +286,7 @@ require_once '../assets/php/createDatabase.php';
 
       <h2>HVAR.mall ID</h2>
 
-      <form action="../assets/php/forgotfun.php" class="forgot-container-form" method="post">
+      <form action="forgotfun.php" class="forgot-container-form" method="post">
 
         <h1>Are you having trouble signing in?</h1>
         <p>Please enter your HVAR.mall ID to get started.</p>

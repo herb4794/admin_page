@@ -1,11 +1,12 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\Exception;
 
 require_once 'config.php';
-require_once 'C:\xampp7.4\htdocs\admin_page\vendor\autoload.php';
-
+// require '../PHPMailer/src/Exception.php';
+// require '../PHPMailer/src/PHPMailer.php';
+// require '../PHPMailer/src/SMTP.php';
 
 class CreateDatabase extends Config
 {
@@ -37,7 +38,7 @@ class CreateDatabase extends Config
 
     // Create connection
     $this->con = mysqli_connect($serverName, $userName, $password, $databaseName);
-    $this->mail = new PHPMailer(true);
+    // $this->mail = new PHPMailer(true);
     if (!$this->con) {
       die("Connection failed: " . mysqli_connect_error());
     }
@@ -383,59 +384,59 @@ class CreateDatabase extends Config
     return $result;
   }
 
-  public function forGotPassword($email, $name)
-  {
-    $sql = "SELECT * FROM $this->tableName WHERE email= :email";
-    $stmt = $this->conn->prepare($sql);
-    $forgotPasswordCode = md5($email . time());
-    $stmt->execute([
-      'email' => $email
-    ]);
-    $result = $stmt->fetch();
-    if ($stmt->rowCount() > 0) {
-      $sql = "UPDATE users SET forgotPasswordCode = '$forgotPasswordCode' WHERE email = '$email'";
-      $stmt = $this->conn->prepare($sql);
-      $stmt->execute();
-      $subject = "HVAR Support Department";
-      $msg = "Please Check This To Change Your Password";
-      $msg .= "<html></body><div><div>Dear $name ,</div></br></br>";
-      $msg .= "<div style='padding-top:8px;'>Please click The following link For verifying and activation of your account</div>
-        <div style='padding-top:10px;'><a href='http://localhost/admin_page/src/www/revisePassword.php?forgotIdVerification=$forgotPasswordCode'>Click Here</a></div> 
-        </body></html>";
+  // public function forGotPassword($email, $name)
+  // {
+  //   $sql = "SELECT * FROM $this->tableName WHERE email= :email";
+  //   $stmt = $this->conn->prepare($sql);
+  //   $forgotPasswordCode = md5($email . time());
+  //   $stmt->execute([
+  //     'email' => $email
+  //   ]);
+  //   $result = $stmt->fetch();
+  //   if ($stmt->rowCount() > 0) {
+  //     $sql = "UPDATE users SET forgotPasswordCode = '$forgotPasswordCode' WHERE email = '$email'";
+  //     $stmt = $this->conn->prepare($sql);
+  //     $stmt->execute();
+  //     $subject = "HVAR Support Department";
+  //     $msg = "Please Check This To Change Your Password";
+  //     $msg .= "<html></body><div><div>Dear $name ,</div></br></br>";
+  //     $msg .= "<div style='padding-top:8px;'>Please click The following link For verifying and activation of your account</div>
+  //       <div style='padding-top:10px;'><a href='http://localhost/admin_page/src/www/revisePassword.php?forgotIdVerification=$forgotPasswordCode'>Click Here</a></div> 
+  //       </body></html>";
 
-      try {
-        $this->mail->isSMTP();
-        $this->mail->CharSet = "utf-8";
-        $this->mail->SMTPAuth = true;
-        $this->mail->SMTPSecure = "ssl";
+  //     try {
+  //       $this->mail->isSMTP();
+  //       $this->mail->CharSet = "utf-8";
+  //       $this->mail->SMTPAuth = true;
+  //       $this->mail->SMTPSecure = "ssl";
 
-        $this->mail->Host = 'smtp.gmail.com';
-        $this->mail->Port = 465;
-        $this->mail->SMTPOptions = array(
-          'ssl' => array(
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-            'allow_self_signed' => true
-          )
-        );
-        $this->mail->isHTML(true);
+  //       $this->mail->Host = 'smtp.gmail.com';
+  //       $this->mail->Port = 465;
+  //       $this->mail->SMTPOptions = array(
+  //         'ssl' => array(
+  //           'verify_peer' => false,
+  //           'verify_peer_name' => false,
+  //           'allow_self_signed' => true
+  //         )
+  //       );
+  //       $this->mail->isHTML(true);
 
-        $this->mail->Username = 'herb4794@gmail.com';
-        $this->mail->Password = 'zmzoxeublicbskpf';
+  //       $this->mail->Username = 'herb4794@gmail.com';
+  //       $this->mail->Password = 'zmzoxeublicbskpf';
 
-        $this->mail->setFrom('herb4794@mail.com', 'HVAR.mail');
-        $this->mail->Subject = $subject;
-        $this->mail->Body = $msg;
-        $this->mail->addAddress($email, $name);
+  //       $this->mail->setFrom('herb4794@mail.com', 'HVAR.mail');
+  //       $this->mail->Subject = $subject;
+  //       $this->mail->Body = $msg;
+  //       $this->mail->addAddress($email, $name);
 
-        $this->mail->send();
-        $_SESSION["emailStatus"] = "Email has been sent";
-      } catch (Exception $e) {
-        echo  $_SESSION["emailStatus"] = $this->mail->ErrorInfo;
-      }
-    }
-    return $result;
-  }
+  //       $this->mail->send();
+  //       $_SESSION["emailStatus"] = "Email has been sent";
+  //     } catch (Exception $e) {
+  //       $_SESSION["emailStatus"] = $this->mail->ErrorInfo;
+  //     }
+  //   }
+  //   return $result;
+  // }
 
   public function forGotPasswordResetPage($forgotPasswordCode, $password)
   {
@@ -479,3 +480,5 @@ class CreateDatabase extends Config
     }
   }
 }
+
+?>

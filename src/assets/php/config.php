@@ -21,7 +21,4 @@ class Config
 
 }
 
-
-$obj = new config;
-
 ?>
