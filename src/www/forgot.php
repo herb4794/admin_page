@@ -303,7 +303,7 @@ require_once '../assets/php/createDatabase.php';
                 $forgotId = $_SESSION["forgotPassword"];
                 $emailStatus =$_SESSION["emailStatus"];
                 echo "<p>The Verification Code is send to[<strong id=\"forgotText\">$forgotId</strong>]</p>";
-                echo "<p>The Verification Code is send to[<strong id=\"forgotText\">$emailStatus</strong>]</p>";
+                echo "<p>The Verification is Sent you email[<strong id=\"forgotText\">$emailStatus</strong>]</p>";
               }else{
                 echo "<p>You User ID is Wrong Please Try Again</p>";
               }
