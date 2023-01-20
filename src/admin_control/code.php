@@ -2,9 +2,9 @@
 session_start();
 @include('connect.php');
 @include('../assets/php/createDatabase.php');
-
+require_once '../www/mailer_controller.php';
 $database = new CreateDatabase("userAdminForm", "users");
-
+$mail = new mailController("userAdminForm", "users");
 
 // TODO Delete User Information Function
 if (isset($_POST['DeleteUserbtn'])) {
@@ -17,7 +17,7 @@ if (isset($_POST['DeleteUserbtn'])) {
 }
 
 if (isset($_POST['addUser'])) {
-  $database->createUser();
+  $mail->createUser();
 }
 
 
