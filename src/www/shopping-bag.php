@@ -1,6 +1,5 @@
 <?php
 // session Starting initialization
-// session Starting initialization
 session_start();
 
 // input form php file function
@@ -11,20 +10,28 @@ require_once '../assets/php/component.php';
 // input php connection and configuration file initialization
 require_once '../assets/php/createDatabase.php';
 
-include  'addProductToCart.php';
+// create instance of Createdb Class
+$database = new CreateDatabase("product_database", "product_table");
 
-// initialization for the database connect
-// this coding is using php createDatabase class of create new DB function
-$database = new createDatabase("product_database", "product_table");
-
+if (isset($_POST['remove'])) {
+  if ($_GET['action'] == 'remove') {
+    foreach ($_SESSION['cart'] as $key => $value) {
+      if ($value["product_id"] == $_GET['id']) {
+        unset($_SESSION['cart'][$key]);
+        echo "<script>window.location='cart.php'</script>";
+      }
+    }
+  }
+}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-  <title>Your Bag — HVAR.mall (Hong Kong)</title>
-
+  <title>HVAR.mall (Hong Kong)</title>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,14 +57,20 @@ $database = new createDatabase("product_database", "product_table");
   <!-- Navigation-Bar of CSS -->
   <link rel="stylesheet" href="../assets/css/navigation-bar.css" />
 
-  <!-- Shopping Bag of CSS -->
-  <link rel="stylesheet" href="../assets/css/shopping-bag.css" />
-
   <!-- Products of CSS -->
   <link rel="stylesheet" href="../assets/css/products.css" />
 
+  <!-- Side Scroll of CSS -->
+  <link rel="stylesheet" href="../assets/css/side-scroll.css" />
+
+  <!-- Guess You Like of CSS -->
+  <link rel="stylesheet" href="../assets/css/guess-you-like.css" />
+
   <!-- Footer of CSS -->
   <link rel="stylesheet" href="../assets/css/footer.css" />
+
+  <!-- Cart of CSS -->
+  <link rel="stylesheet" href="../assets/css/cart.css" />
 
   <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
@@ -107,7 +120,7 @@ $database = new createDatabase("product_database", "product_table");
           <li><a class="link-search"></a></li>
           <li><a class="link-bag"></a></li>
           <li class="desktop-login">
-            <a href="www/register-and-login.php" class="link-user">
+            <a href="../www/register-and-login.php" class="link-user">
               <span class="userStatus">
               <?php
                 if (isset($_SESSION['user_name'])) {
@@ -123,7 +136,7 @@ $database = new createDatabase("product_database", "product_table");
           </li>
 
           <!-- This Login Option Is Only Available In The Mobile Version -->
-          <li class="mobile-login"><a href="www/register-and-login.php" class=""><i class="link-user"></i>Account</a>
+          <li class="mobile-login"><a href="../www/register-and-login.php" class=""><i class="link-user"></i>Account</a>
           </li>
 
         </ul>
@@ -196,9 +209,6 @@ $database = new createDatabase("product_database", "product_table");
       </div>
 
     </div>
-
-    <div class="search-container-overlay" onclick="document.getElementById('desktop-searchTxt').value = ''"></div>
-    <!-- End of Search Container -->
 
     <!-- Start of Shopping-Bag Container -->
     <!--using PHP  coding by the Lawrence coding  -->
@@ -283,30 +293,82 @@ $database = new createDatabase("product_database", "product_table");
     </div>
 
     <div class="search-container-overlay" onclick="document.getElementById('desktop-searchTxt').value = ''"></div>
+
+    <div class="search-container-overlay" onclick="document.getElementById('desktop-searchTxt').value = ''"></div>
     <!-- End of Search Container -->
   </header>
-  <!-- Header of Navigation-Bar -->
 
-  <!-- Body of Shopping Bag -->
+  <div class="container-fluid">
+    <div class="row px-5">
 
-  <div class="shopping-bag">
+      <div class="col-md-7">
+        <a href="./index.php">
+          <img src="">
+        </a>
 
-    <!-- Shopping Bag Title -->
-    <div class="pages-title">
-      <h2 class="pages-header">Your Bag</h2>
+        <div class="shopping-cart">
+          <h6>My Cart</h6>
+          <hr>
+
+          <?php
+
+          $total = 0;
+          if (isset($_SESSION['cart'])) {
+            $product_id = array_column($_SESSION['cart'], 'product_id');
+
+            $result = $database->getData();
+            while ($row = $result->fetch()) {
+              foreach ($product_id as $id) {
+                if ($row['id'] == $id) {
+                  cartComponent($row['product_name'], $row['product_discount'], $row['product_description'], $row['product_image'], $row['id']);
+                  $total = $total + (double) $row['product_discount'];
+                }
+              }
+            }
+          } else {
+            echo "<h5>Cart is Empty</h5>";
+          }
+          ?>
+
+        </div>
+      </div>
+      <div class="col-md-4 offset-md-1 border rounded mt-5 bg-white h-25">
+
+        <div class="pt-4">
+          <h6>PRICE DETAILS</h6>
+          <hr>
+          <div class="row price-details">
+            <div class="col-md-6">
+              <?php
+              if (isset($_SESSION['cart'])) {
+                $count = count($_SESSION['cart']);
+                echo "<h6>Price($count items)</h6>";
+              } else {
+                echo "<h6>Price(0 items)</h6>";
+              }
+              ?>
+              <h6>Delivery Charges</h6>
+              <hr>
+              <h6>Amount Payable</h6>
+            </div>
+            <div class="col-md-6">
+              <h6>$
+                <?php echo $total; ?>
+              </h6>
+              <h6 class="text-success">FREE</h6>
+              <hr>
+              <h6>
+                $
+                <?php echo $total; ?>
+              </h6>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <!-- Shopping Bag Title -->
-
-    <div class="container">
-      <!-- Purchased items -->
-      <!-- Edited below -->
-
-
-      <!-- Purchased items -->
-    </div>
-
   </div>
-  <!-- Body of Shopping Bag -->
+
 
   <!-- Footer -->
   <footer>
@@ -410,8 +472,21 @@ $database = new createDatabase("product_database", "product_table");
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
 
+  <!-- Main of JavaScript -->
+  <script src="../assets/js/main.js"></script>
+
   <!-- Navigation-Bar of JavaScript -->
   <script src="../assets/js/navigation-bar.js"></script>
+
+  <!-- Products of JavaScript -->
+  <script src="../assets/js/products.js"></script>
+
+  <!-- Side Scroll of JavaScript -->
+  <script src="../assets/js/side-scroll.js"></script>
+
+  <!-- Cart of JavaScript -->
+  <script src="../assets/js/cart.js"></script>
+
 </body>
 
 </html>

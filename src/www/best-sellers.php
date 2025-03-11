@@ -351,7 +351,7 @@ if (isset($_POST['add'])) {
         <div class="row justify-content-around">
 
           <!-- Test Product 1 -->
-          <!--using PHP Loop by the Lawrence coding  -->
+          <!--NOTE: using PHP Loop by the Lawrence coding  -->
           <!-- Test Product Loop for PHP-->
           <?php
         $result = $database->getData();

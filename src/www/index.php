@@ -1,5 +1,4 @@
 <?php
-
 // session Starting initialization
 session_start();
 
@@ -13,19 +12,23 @@ require_once '../assets/php/createDatabase.php';
 
 include  'addProductToCart.php';
 
+
 // initialization for the database connect
 // this coding is using php createDatabase class of create new DB function
 $database = new createDatabase("product_database", "product_table");
+
 function function_alert($msg)
 {
-  echo "<script type='text/javascript'>alert('$msg');</script>";
+    echo "<script type='text/javascript'>alert('$msg');</script>";
 }
 
-if (isset($_POST['add'])) {
-  addToCart();
-}
+// if (isset($_POST['add'])) {
+//     addToCart();
+// }
 
+flush();
 ?>
+
 
 
 <!DOCTYPE html>
@@ -33,7 +36,7 @@ if (isset($_POST['add'])) {
 
 <head>
 
-  <title>HVAR.mall (Hong Kong)</title>
+   <title>HVAR.mall (Hong Kong)</title>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +62,7 @@ if (isset($_POST['add'])) {
   <link rel="stylesheet" href="../assets/css/style.css" />
 
   <!-- Navigation-Bar of CSS -->
-  <link rel="stylesheet" href="../assets/css/navigation-bar.css" />
+  <link rel="stylesheet" href="../assets/css/navigation-bar.css<?php echo '?'.mt_rand(); ?>" />
 
   <!-- Products of CSS -->
   <link rel="stylesheet" href="../assets/css/products.css" />
@@ -116,11 +119,11 @@ if (isset($_POST['add'])) {
           </li>
 
           <!-- The Mobile Version Will Use The Following Items -->
-          <li><a href="../www/best-sellers.php" class="">Best Sellers</a></li>
-          <li><a href="../www/todays-deals.php" class="">Today's Deals</a></li>
-          <li><a href="../www/new-releases.php" class="">New Releases</a></li>
-          <li><a href="../www/gifts-and-coupons.php" class="">Gifts & Coupons</a></li>
-          <li><a href="../www/support.php" class="">Support</a></li>
+          <li><a href="../www/best-sellers.php" class=""></a></li>
+          <li><a href="../www/todays-deals.php" class=""></a></li>
+          <li><a href="../www/new-releases.php" class=""></a></li>
+          <li><a href="../www/gifts-and-coupons.php" class=""></a></li>
+          <li><a href="../www/support.php" class=""></a></li>
           <li><a class="link-search"></a></li>
           <li><a class="link-bag"></a></li>
           <li class="desktop-login">
@@ -128,13 +131,12 @@ if (isset($_POST['add'])) {
               <span class="userStatus">
                 <?php
                 if (isset($_SESSION['user_name'])) {
-                  echo $_SESSION['user_name'];
-                  // $_SESSION['status'] . function_alert("You have login ! Please logout first");
-                } else if (isset($_SESSION['admin_name'])) {
-                  echo $_SESSION['admin_name'];
-                  // $_SESSION['status'] . function_alert("You have login ! Please logout first");
-                } else
-                ?>
+                    echo $_SESSION['user_name'];
+                    // $_SESSION['status'] . function_alert("You have login ! Please logout first");
+                } elseif (isset($_SESSION['admin_name'])) {
+                    echo $_SESSION['admin_name'];
+                    // $_SESSION['status'] . function_alert("You have login ! Please logout first");
+                } else ?>
               </span>
             </a>
           </li>
@@ -225,13 +227,13 @@ if (isset($_POST['add'])) {
         <h2>
           <?php
           if (isset($_SESSION['cart'])) {
-            $count = count($_SESSION['cart']);
-            echo "<span id=\"cart_count\">$count product in your Bag</span>";
+              $count = count($_SESSION['cart']);
+              echo "<span id=\"cart_count\">$count product in your Bag</span>";
 
           } else {
-            echo "<span id=\"cart_count\">You Bag is Empty</span>";
+              echo "<span id=\"cart_count\">You Bag is Empty</span>";
           }
-          ?>
+?>
         </h2>
         <ul>
           <li>
@@ -243,21 +245,18 @@ if (isset($_POST['add'])) {
           <li>
             <a href="../www/cart.php"><i class="packet-icon"></i>Orders</a>
           </li>
-          <li>
-            <a href="../user_profile/user_index.php"><i class="packet-icon"></i>User Profile</a>
-          </li>
-          <?php 
-            if(isset($_SESSION["admin_name"]) || isset($_SESSION['user_name'])){
-              echo'<li><a href="../assets/php/logout.php"><i class="logout_icon"></i>Logout</a></li>';
-            }
-            ?>
+          <?php
+  if (isset($_SESSION["admin_name"]) || isset($_SESSION['user_name'])) {
+      echo'<li><a href="../assets/php/logout.php"><i class="logout_icon"></i>Logout</a></li>';
+  }
+?>
             <?php
-            if (isset($_SESSION['admin_name'])) {
-              echo '<li><a href="../admin_control/admin_page.php"><i class="logout_icon"></i>admin</a></li>';
-            }else if(isset($_SESSION['user_name'])){
-              echo '<li><a href="../User_interface/userIndex.php"><i class="logout_icon"></i>Panel</a></li>';
-            }
-            ?>
+if (isset($_SESSION['admin_name'])) {
+    echo '<li><a href="../admin_control/admin_page.php"><i class="logout_icon"></i>admin</a></li>';
+} elseif (isset($_SESSION['user_name'])) {
+    echo '<li><a href="../User_interface/userIndex.php"><i class="logout_icon"></i>Panel</a></li>';
+}
+?>
         </ul>
       </div>
     </div>
@@ -269,12 +268,12 @@ if (isset($_POST['add'])) {
         <h2>
           <?php
           if (isset($_SESSION['cart'])) {
-            $count = count($_SESSION['cart']);
-            echo "<span id=\"cart_count\">You Bag is $count</span>";
+              $count = count($_SESSION['cart']);
+              echo "<span id=\"cart_count\">You Bag is $count</span>";
           } else {
-            echo "<span id=\"cart_count\">You Bag is Empty</span>";
+              echo "<span id=\"cart_count\">You Bag is Empty</span>";
           }
-          ?>
+?>
         </h2>
         <ul>
           <li>
@@ -286,18 +285,18 @@ if (isset($_POST['add'])) {
           <li>
             <a href="../www/cart.php"><i class="packet-icon"></i>Orders</a>
           </li>
-          <?php 
-            if(isset($_SESSION["admin_name"]) || isset($_SESSION['user_name'])){
-              echo'<li><a href="../assets/php/logout.php"><i class="logout_icon"></i>Logout</a></li>';
-            }
-            ?>
           <?php
-            if (isset($_SESSION['admin_name'])) {
-              echo '<li><a href="../admin_control/admin_page.php"><i class="logout_icon"></i>admin</a></li>';
-            }else if(isset($_SESSION['user_name'])){
-              echo '<li><a href="../User_interface/userIndex.php"><i class="logout_icon"></i>Panel</a></li>';
-            }
-            ?>
+  if (isset($_SESSION["admin_name"]) || isset($_SESSION['user_name'])) {
+      echo'<li><a href="../assets/php/logout.php"><i class="logout_icon"></i>Logout</a></li>';
+  }
+?>
+          <?php
+if (isset($_SESSION['admin_name'])) {
+    echo '<li><a href="../admin_control/admin_page.php"><i class="logout_icon"></i>admin</a></li>';
+} elseif (isset($_SESSION['user_name'])) {
+    echo '<li><a href="../User_interface/userIndex.php"><i class="logout_icon"></i>Panel</a></li>';
+}
+?>
         </ul>
       </div>
 
@@ -323,17 +322,17 @@ if (isset($_POST['add'])) {
         aria-label="Slide 3"></button>
     </div>
 
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../assets/images/bootstrap-carousel/carousel/banner_1.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../assets/images/bootstrap-carousel/carousel/banner_2.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../assets/images/bootstrap-carousel/carousel/banner_5.jpg" class="d-block w-100" alt="...">
-      </div>
-    </div>
+    <!-- <div class="carousel-inner"> -->
+    <!--   <div class="carousel-item active"> -->
+    <!--     <img src="../assets/images/bootstrap-carousel/carousel/WhatsApp Image 2025-03-04 at 16.12.54.jpeg" class="d-block w-100" alt="..."> -->
+    <!--   </div> -->
+    <!--   <div class="carousel-item"> -->
+    <!--     <img src="../assets/images/bootstrap-carousel/carousel/WhatsApp Image 2025-03-04 at 16.12.55 (1).jpeg" class="d-block w-100" alt="..."> -->
+    <!--   </div> -->
+    <!--   <div class="carousel-item"> -->
+    <!--     <img src="../assets/images/bootstrap-carousel/carousel/WhatsApp Image 2025-03-04 at 16.12.55 (2).jpeg" class="d-block w-100" alt="..."> -->
+    <!--   </div> -->
+    <!-- </div> -->
 
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
       data-bs-slide="prev">
@@ -369,11 +368,17 @@ if (isset($_POST['add'])) {
         <!-- Test Product Loop for PHP-->
         <?php
         $result = $database->getData();
-        while ($row = $result->fetch()) {
-          productComponent($row['product_name'], $row['product_price'], $row['product_description'],
-           $row['product_image'], $row['id'], $row['product_discount'], );
-        }
-        ?>
+while ($row = $result->fetch()) {
+    productComponent(
+        $row['product_name'],
+        $row['product_price'],
+        $row['product_description'],
+        $row['product_image'],
+        $row['id'],
+        $row['product_discount'],
+    );
+}
+?>
         <!-- End of Test Product Loop for PHP-->
 
       </div>
@@ -395,12 +400,18 @@ if (isset($_POST['add'])) {
         <!--using PHP Loop by the Lawrence coding  -->
         <!-- Test Product Loop for PHP -->
         <?php
-        $result = $database->getData();
-        while ($row = $result->fetch()) {
-          productListComponent($row['product_name'], $row['product_price'], $row['product_description'],
-           $row['product_image'], $row['id'], $row['product_discount'], );
-        }
-        ?>
+$result = $database->getData();
+while ($row = $result->fetch()) {
+    productListComponent(
+        $row['product_name'],
+        $row['product_price'],
+        $row['product_description'],
+        $row['product_image'],
+        $row['id'],
+        $row['product_discount'],
+    );
+}
+?>
         <!-- End of Test Product Loop for PHP -->
       </div>
     </div>
@@ -487,7 +498,7 @@ if (isset($_POST['add'])) {
 
       <!-- Copyright -->
       <div class="copyrightText">
-        <p>Copyright © 2022 HVAR Inc. All rights reserved.</p>
+        <p>Copyright © 2025 HVAR Inc. All rights reserved.</p>
       </div>
 
   </footer>
@@ -509,6 +520,7 @@ if (isset($_POST['add'])) {
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
 
+  <script src="../assets/js/products.js"></script>
   <!-- Main of JavaScript -->
   <script src="../assets/js/main.js"></script>
 
@@ -516,10 +528,10 @@ if (isset($_POST['add'])) {
   <script src="../assets/js/navigation-bar.js"></script>
 
   <!-- Products of JavaScript -->
-  <script src="../assets/js/products.js"></script>
 
   <!-- Side Scroll of JavaScript -->
   <script src="../assets/js/side-scroll.js"></script>
+  <script src="../assets/js/indexController.js" ></script>
 
 </body>
 

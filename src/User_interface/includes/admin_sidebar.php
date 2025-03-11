@@ -14,7 +14,7 @@ $database = new CreateDatabase("product_database", "product_table");
   <a href="./admin_page.php" class="brand-link">
     <img src="assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
       style="opacity: .8">
-    <span class="brand-text font-weight-light">HAVR Admin</span>
+      <span class="brand-text font-weight-light"><?php echo $_SESSION['user_name'] ?></span>
   </a>
 
   <!-- Sidebar -->
@@ -49,7 +49,7 @@ $database = new CreateDatabase("product_database", "product_table");
                with font-awesome or any other icon font library -->
 
         <li class="nav-item">
-          <a href="./admin_page.php" class="nav-link">
+          <a href="./userIndex.php" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
               Dashboard
@@ -84,7 +84,7 @@ $database = new CreateDatabase("product_database", "product_table");
 
         <li class="nav-header">Setting</li>
         <li class="nav-item">
-          <a href="./product_control.php" class="nav-link">
+          <a href="./userIndex.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
             <p>
               Product
@@ -101,7 +101,7 @@ $database = new CreateDatabase("product_database", "product_table");
             </p>
           </a>
         </li>
-        <li class="nav-item">
+       <!-- <li class="nav-item">
           <a href="./registered.php" class="nav-link">
             <i class="nav-icon far fa-image"></i>
             <p>
@@ -109,6 +109,7 @@ $database = new CreateDatabase("product_database", "product_table");
             </p>
           </a>
         </li>
+-->
         <!-- <li class="nav-item">
             <a href="pages/kanban.html" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>

@@ -1,8 +1,6 @@
 <?php 
-if (isset($_POST['add'])) {
   function addToCart()
   {
-
 
   if (isset($_SESSION['cart'])) {
 
@@ -29,5 +27,4 @@ if (isset($_POST['add'])) {
     $_SESSION['cart'][0] = $item_array;
   }
   }
-}
 ?>

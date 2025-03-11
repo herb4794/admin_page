@@ -17,9 +17,9 @@ include 'addProductToCart.php';
 // this coding is using php createDatabase class of create new DB function
 $database = new createDatabase("product_database", "product_table");
 
-if (isset($_POST['add'])) {
-  addToCart();
-}
+// if (isset($_POST['add'])) {
+//   addToCart();
+// }
 
 ?>
 <!DOCTYPE html>

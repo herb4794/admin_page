@@ -8,7 +8,7 @@ require_once '../../vendor/autoload.php';
 
 class mailController   {
   private const MAILNAME = 'hkctgroupporject@gmail.com';
-  private const MAILPASS = 'uodmlqfwauevwdvl';
+  private const MAILPASS = 'afpitgtynhtqjerv';
   protected $mail;
   public $databaseName;
   public $serverName;
@@ -22,7 +22,7 @@ class mailController   {
     $tableName = "",
     $serverName = "localhost",
     $userName = "root",
-    $password = ""
+    $password = "root"
   )
   {
     //initialization mail function
@@ -143,14 +143,14 @@ class mailController   {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
     $confirmPassword = $_POST['confirmPassword'];
     $user_type = $_POST['user_type'];
     $activationCode = md5($email . time());
-    $status = 0;
+    $status = 1;
 
     if ($name && $email && $phone != null) {
-      if ($password == $confirmPassword) {
+      if ($password = $confirmPassword) {
         $checkEmail = "SELECT * FROM $this->tableName WHERE email = '$email' ";
         $checkEmailRun = $this->conn->query($checkEmail);
         if ($checkEmailRun->rowCount() > 0) {
@@ -170,38 +170,38 @@ class mailController   {
           $result = true;
 
             if($result == true){
-              $msg = "Thank For Your Register";
-              $subject = "HVAR Development Department";
-              $msg .= "<html></body><div><div>Dear $name,</div></br></br>";
-              $msg .= "<div style='padding-top:8px;'>Please click The following link For verifying and activation of your account</div>
-              <div style='padding-top:10px;'><a href='http://localhost/admin_page/src/www/verification.php?activationCode=$activationCode'>Click Here</a></div> 
-              </body></html>";
-              $this->mail->isSMTP();
-              $this->mail->CharSet = "utf-8";
-              $this->mail->SMTPAuth = true;
-              $this->mail->SMTPSecure = "ssl";
+              // $msg = "Thank For Your Register";
+              // $subject = "HVAR Development Department";
+              // $msg .= "<html></body><div><div>Dear $name,</div></br></br>";
+              // $msg .= "<div style='padding-top:8px;'>Please click The following link For verifying and activation of your account</div>
+              // <div style='padding-top:10px;'><a href='http://localhost/admin_page/src/www/verification.php?activationCode=$activationCode'>Click Here</a></div> 
+              // </body></html>";
+              // $this->mail->isSMTP();
+              // $this->mail->CharSet = "utf-8";
+              // $this->mail->SMTPAuth = true;
+              // $this->mail->SMTPSecure = "ssl";
 
-              $this->mail->Host = 'smtp.gmail.com';
-              $this->mail->Port = 465;
-              $this->mail->SMTPOptions = array(
-                'ssl' => array(
-                  'verify_peer' => false,
-                  'verify_peer_name' => false,
-                  'allow_self_signed' => true
-                )
-              );
-              $this->mail->isHTML(true);
+              // $this->mail->Host = 'smtp.gmail.com';
+              // $this->mail->Port = 465;
+              // $this->mail->SMTPOptions = array(
+              //   'ssl' => array(
+              //     'verify_peer' => false,
+              //     'verify_peer_name' => false,
+              //     'allow_self_signed' => true
+              //   )
+              // );
+              // $this->mail->isHTML(true);
 
-              $this->mail->Username = self::MAILNAME;
-              $this->mail->Password = self::MAILPASS;
+              // $this->mail->Username = self::MAILNAME;
+              // $this->mail->Password = self::MAILPASS;
 
-              $this->mail->setFrom(Self::MAILNAME, 'HVAR.mail');
-              $this->mail->Subject = $subject;
-              $this->mail->Body = $msg;
+              // $this->mail->setFrom(Self::MAILNAME, 'HVAR.mail');
+              // $this->mail->Subject = $subject;
+              // $this->mail->Body = $msg;
 
-              $this->mail->addAddress($email, $name);
+              // $this->mail->addAddress($email, $name);
 
-              $this->mail->send();
+              // $this->mail->send();
 
             }
         }

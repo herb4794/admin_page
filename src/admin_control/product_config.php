@@ -19,7 +19,7 @@ if (isset($_POST['DeleteProductbtn'])) {
   header("location: product_control.php");
 }
 
-// TODO Eide Product Information Function
+// TODO: Eide Product Information Function
 if (isset($_POST['UpdateProduct'])) {
   $product_id = $_POST['product_id'];
   $product_name = $_POST['product_name'];

@@ -3,7 +3,7 @@ class Config
 {
   public const DBHOST = 'localhost';
   public const DBNAME = 'product_database';
-  public const DBPASS = '';
+  public const DBPASS = 'root';
   public const DBUSER = 'root';
   public $dns = 'mysql:host=' . self::DBHOST . ';dbname=' . self::DBNAME . '';
   public $conn = null;

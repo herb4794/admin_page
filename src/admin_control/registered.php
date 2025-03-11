@@ -31,7 +31,7 @@ $database = new CreateDatabase("userAdminForm", "users");
             </div>
             <div class="form-group">
               <label for="">Email Id</label>
-              <span class="email_error text-danger ml-2"></span>
+              <span class="email_error text-primary ml-2"></span>
               <input type="email" class="form-control email_id" name="email" placeholder="Email">
             </div>
             <div class="form-group">

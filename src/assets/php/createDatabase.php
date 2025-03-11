@@ -27,7 +27,7 @@ class CreateDatabase extends Config
     $tableName = "",
     $serverName = "localhost",
     $userName = "root",
-    $password = ""
+    $password = "root"
   ) {
     $this->serverName = $serverName;
     $this->databaseName = $databaseName;

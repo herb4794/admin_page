@@ -7,7 +7,7 @@ $productComponentElement =
 "
 
 <div class=\"product-card\">
-<form action=\"#\" method=\"post\">
+<form action=\"productDetail.php\" method=\"post\">
 <div class=\"product-image\">
   <img src=\"$productImage\" class=\"product-thumb\" alt=\"\">
 </div>
