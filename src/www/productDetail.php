@@ -8,7 +8,7 @@ $_POST['product_id'];
 
 if (isset($_POST['goBack'])) {
     $productArr = [];
-   $_POST = array();
+    $_POST = array();
     header("location: ../www/index.php");
 }
 
@@ -25,6 +25,7 @@ while ($row = $result->fetch()) {
         if ($id == $product_id) {
             $productArr = array(
             'product_id' => $id,
+              'product_image' => $row['product_image'],
               'product_name' => $row['product_name'],
               'product_description' => $row['product_description'],
               'product_price' => $row['product_discount'],
@@ -49,6 +50,7 @@ while ($row = $result->fetch()) {
   <body>
 
     <form  method="post" class="card">
+      <img style="width: 150px;" src="<?php echo $productArr['product_image'];  ?>" />
       <h1><?php echo $productArr['product_description'] ?></h1>
       <p class="price"><?php echo $productArr['product_price'] ?></p>
       <p><?php echo $productArr['product_name'] ?></p>
